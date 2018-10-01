@@ -1,60 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BotWShrines
+namespace ZeldaShrineTracker
 {
     public partial class Form1 : Form
     {
-        List<Shrine> shrineList = Xml.CreateShrineList();
-        List<string> shrineNames = new List<string>();
-        HashSet<string> regions = new HashSet<string>();
-        string queryInput;
+        private List<Shrine> _allShrines = new List<Shrine>();
+        private readonly List<string> _shrineNames = new List<string>();
+        // HashSet is used instead of a List<T> so that there will be no duplicate elements
+        private readonly HashSet<string> _regions = new HashSet<string>();
+        private string _queryInput;
         
         public Form1()
         {
             InitializeComponent();
-            foreach (Shrine shrine in shrineList)
-            {
-                shrineNames.Add(shrine.Name);
-                regions.Add(shrine.Region);
-            }
-            autoCompleteTextBox(enterAShrineToEditBox, shrineNames);
+            GetShrineData();
+            AutoCompleteTextBox(enterAShrineToEditBox, _shrineNames);
             DisplayDefaultEditControls();
-            dataToEditDropDown.Enabled = false;
-            dataToEditDropDown.Visible = false;
-            selectToEditLabel.Enabled = false;
-            selectToEditLabel.Visible = false;
+            dataToEditDropDown.HideControl();
+            selectToEditLabel.HideControl();
         }
-        private void autoCompleteTextBox(TextBox textBox, IEnumerable<string> list)
+
+        private void GetShrineData()
+        {
+            _allShrines = Xml.GetShrines().ToList();
+
+            foreach (Shrine shrine in _allShrines)
+            {
+                _shrineNames.Add(shrine.Name);
+                _regions.Add(shrine.Region);
+            }
+        }
+
+        private void AutoCompleteTextBox(TextBox textBox, IEnumerable<string> list)
         {
             textBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             textBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            AutoCompleteStringCollection DataCollection = new AutoCompleteStringCollection();
-            addItems(DataCollection, list);
-            textBox.AutoCompleteCustomSource = DataCollection;
-        }
-
-        public void addItems(AutoCompleteStringCollection col, IEnumerable<string> list)
-        {
-            foreach (string item in list)
-            {
-                col.Add(item);
-            }
+            var dataCollection = new AutoCompleteStringCollection();
+            dataCollection.AddItems(list);
+            textBox.AutoCompleteCustomSource = dataCollection;
         }
 
         private void ResetViewForm()
         {
-            queryInputTextBox.Enabled = true;
-            queryInputTextBox.Visible = true;
-            typeCompletionSelection.Enabled = false;
-            typeCompletionSelection.Visible = false;
+            queryInputTextBox.ShowControl();
+            typeCompletionSelection.HideControl();
             viewDetailBox.Clear();
             queryInputTextBox.Clear();
             typeCompletionSelection.Items.Clear();
@@ -62,24 +54,22 @@ namespace BotWShrines
 
         private void SetViewTypeCompletionControls()
         {
-            queryInputTextBox.Visible = false;
-            queryInputTextBox.Enabled = false;
-            typeCompletionSelection.Visible = true;
-            typeCompletionSelection.Enabled = true;
+            queryInputTextBox.HideControl();
+            typeCompletionSelection.ShowControl();
         }
 
-        private void viewByDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        private void ViewByDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResetViewForm();
             switch (viewByDropDown.SelectedIndex)
             {
                 case 0:
                     queryLabel.Text = "Enter a shrine name below:";
-                    autoCompleteTextBox(queryInputTextBox, shrineNames);
+                    AutoCompleteTextBox(queryInputTextBox, _shrineNames);
                     break;
                 case 1:
                     queryLabel.Text = "Enter a region below:";
-                    autoCompleteTextBox(queryInputTextBox, regions);
+                    AutoCompleteTextBox(queryInputTextBox, _regions);
                     break;
                 case 2:
                     SetViewTypeCompletionControls();
@@ -96,68 +86,69 @@ namespace BotWShrines
                     break;
                 case 4:
                     queryLabel.Text = "Search for ____ in Shrine notes: ";
-                    DisplayData.ShowNotes(shrineList, viewDetailBox);
+                    DisplayData.ShowNotes(_allShrines, viewDetailBox);
                     break;
                 default:
                     throw new Exception("How did this happen? There are only 5 View-By selections...");
             }
         }
 
-        private void queryInputTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void QueryInputTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                queryInput = queryInputTextBox.Text;
+            if (e.KeyCode != Keys.Enter) return;
 
-                if (shrineNames.Contains(queryInput))
-                {
-                    DisplayData.ShowShrineInfo(queryInput, shrineList, viewDetailBox);
-                }
-                else if (regions.Contains(queryInput))
-                {
-                    DisplayData.ShowShrinesInARegion(queryInput, shrineList, viewDetailBox);
-                }
-                else
-                    DisplayData.ShowNotes(queryInput, shrineList, viewDetailBox);
+            _queryInput = queryInputTextBox.Text;
+
+            if (_shrineNames.Contains(_queryInput))
+            {
+                DisplayData.ShowShrineInfo(_queryInput, _allShrines, viewDetailBox);
             }
+            else if (_regions.Contains(_queryInput))
+            {
+                DisplayData.ShowShrinesInARegion(_queryInput, _allShrines, viewDetailBox);
+            }
+            else
+                DisplayData.ShowNotes(_queryInput, _allShrines, viewDetailBox);
         }
 
-        private void typeCompletionSelection_SelectedIndexChanged(object sender, EventArgs e)
+        private void TypeCompletionSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (viewByDropDown.SelectedIndex == 2)
+            switch (viewByDropDown.SelectedIndex)
             {
-                switch (typeCompletionSelection.SelectedIndex)
-                {
-                    case 0:
-                        DisplayData.ShowAllShrinesOfType("Blessing", shrineList, viewDetailBox);
-                        break;
-                    case 1:
-                        DisplayData.ShowAllShrinesOfType("Combat", shrineList, viewDetailBox);
-                        break;
-                    case 2:
-                        DisplayData.ShowAllShrinesOfType("Puzzle", shrineList, viewDetailBox);
-                        break;
-                    default:
-                        throw new Exception("How did this happen? There are only 3 type cases...");
-                }
-            }
-            else if (viewByDropDown.SelectedIndex == 3)
-            {
-                if (typeCompletionSelection.SelectedIndex == 0)
-                    viewDetailBox.Text = "Completed shrines: " + Environment.NewLine;
-                else
-                    viewDetailBox.Text = "Incomplete shrines: " + Environment.NewLine;
+                case 2:
+                    switch (typeCompletionSelection.SelectedIndex)
+                    {
+                        case 0:
+                            DisplayData.ShowAllShrinesOfType("Blessing", _allShrines, viewDetailBox);
+                            break;
+                        case 1:
+                            DisplayData.ShowAllShrinesOfType("Combat", _allShrines, viewDetailBox);
+                            break;
+                        case 2:
+                            DisplayData.ShowAllShrinesOfType("Puzzle", _allShrines, viewDetailBox);
+                            break;
+                        default:
+                            throw new Exception("How did this happen? There are only 3 type cases...");
+                    }
 
-                foreach (Shrine shrine in shrineList)
+                    break;
+                case 3:
                 {
-                    if (typeCompletionSelection.SelectedIndex == 0 && shrine.Completion == "Yes")
+                    viewDetailBox.Text = typeCompletionSelection.SelectedIndex == 0 ? "Completed " : "Incomplete ";
+                    viewDetailBox.Text += "shrines: " + Environment.NewLine;
+
+                    foreach (Shrine shrine in _allShrines)
                     {
-                        viewDetailBox.Text += shrine.Name + " - " + shrine.Region + Environment.NewLine;
+                        switch (typeCompletionSelection.SelectedIndex)
+                        {
+                            case 0 when shrine.Completion == "Yes":
+                            case 1 when shrine.Completion == "No":
+                                viewDetailBox.Text += $"{shrine.Name} - {shrine.Region}{Environment.NewLine}";
+                                break;
+                        }
                     }
-                    else if (typeCompletionSelection.SelectedIndex == 1 && shrine.Completion != "Yes")
-                    {
-                        viewDetailBox.Text += shrine.Name + " - " + shrine.Region + Environment.NewLine;
-                    }
+
+                    break;
                 }
             }
         }
@@ -167,71 +158,59 @@ namespace BotWShrines
         // === EDIT TAB ===
         // ================
 
-        string shrineToEdit;
-        string updatedDetails;
-        int shrineIndex;
+        private string _shrineToEdit;
+        private string _updatedDetails;
+        private int _shrineIndex;
 
         private void DisplayDefaultEditControls()
         {
-            editInstructionsLabel.Enabled = false;
-            editInstructionsLabel.Visible = false;
-            dataToEditDropDown.Enabled = true;
-            dataToEditDropDown.Visible = true;
-            selectToEditLabel.Enabled = true;
-            selectToEditLabel.Visible = true;
-            editDetailsBox.Enabled = false;
-            editDetailsBox.Visible = false;
-            typeCompletionLabel.Enabled = false;
-            typeCompletionLabel.Visible = false;
-            completionTypeDropDown.Enabled = false;
-            completionTypeDropDown.Visible = false;
+            editInstructionsLabel.HideControl();
+            dataToEditDropDown.ShowControl();
+            selectToEditLabel.ShowControl();
+            editDetailBox.HideControl();
+            typeCompletionLabel.HideControl();
+            completionTypeDropDown.HideControl();
             completionTypeDropDown.Items.Clear();
-            changesSaved.Enabled = false;
-            changesSaved.Visible = false;
+            changesSaved.HideControl();
         }
 
         private void SetEditTypeCompletionControls()
         {
-            typeCompletionLabel.Enabled = true;
-            typeCompletionLabel.Visible = true;
-            submit.Enabled = false;
-            submit.Visible = false;
-            completionTypeDropDown.Enabled = true;
-            completionTypeDropDown.Visible = true;
+            typeCompletionLabel.ShowControl();
+            submit.HideControl();
+            completionTypeDropDown.ShowControl();
         }
 
-        private void enterAShrineToEditBox_TextChanged(object sender, EventArgs e)
+        private void EnterAShrineToEditBox_TextChanged(object sender, EventArgs e)
         {
-            shrineToEdit = enterAShrineToEditBox.Text;
+            _shrineToEdit = enterAShrineToEditBox.Text;
         }
 
-        private void enterAShrineToEditBox_KeyDown(object sender, KeyEventArgs e)
+        private void EnterAShrineToEditBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode != Keys.Enter) return;
+
+            _shrineToEdit = enterAShrineToEditBox.Text;
+
+            if (_shrineNames.Contains(_shrineToEdit))
             {
-                shrineToEdit = enterAShrineToEditBox.Text;
-
-                if (shrineNames.Contains(shrineToEdit))
+                for (int i = 0; i < _shrineNames.Count; i++)
                 {
-                    for (int i = 0; i < shrineNames.Count; i++)
-                    {
-                        if (shrineToEdit == shrineNames[i])
-                            shrineIndex = i;
-                    }
-                    DisplayData.ShowShrineInfo(shrineToEdit, shrineList, editDetailBox);
-                    DisplayDefaultEditControls();
-                    dataToEditDropDown.SelectedIndex = -1;
+                    if (_shrineToEdit == _shrineNames[i])
+                        _shrineIndex = i;
                 }
-                else
-                    MessageBox.Show("That's not a valid shrine name. Try again.");
+                DisplayData.ShowShrineInfo(_shrineToEdit, _allShrines, editDetailBox);
+                DisplayDefaultEditControls();
+                dataToEditDropDown.SelectedIndex = -1;
             }
+            else
+                MessageBox.Show("That's not a valid shrine name. Try again.");
         }
 
-        private void dataToEdit_SelectedIndexChanged(object sender, EventArgs e)
+        private void DataToEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             DisplayDefaultEditControls();
-            submit.Enabled = true;
-            submit.Visible = true;
+            submit.ShowControl();
 
             if (dataToEditDropDown.SelectedIndex == -1)
             {
@@ -243,14 +222,11 @@ namespace BotWShrines
             switch (dataToEditDropDown.SelectedIndex)
             {
                 case 0: // Description
-                    editDetailsBox.Enabled = true;
-                    editDetailsBox.Visible = true;
-                    editInstructionsLabel.Enabled = true;
-                    editInstructionsLabel.Visible = true;
-                    submit.Enabled = true;
-                    submit.Visible = true;
-                    updatedDetails = editDetailsBox.Text;
-                    editInstructionsLabel.Text = $"Enter a description for {shrineToEdit}:";
+                    editDetailsBox.ShowControl();
+                    editInstructionsLabel.ShowControl();
+                    submit.ShowControl();
+                    _updatedDetails = editDetailsBox.Text;
+                    editInstructionsLabel.Text = $"Enter a description for {_shrineToEdit}:";
                     break;
                 case 1: // Type
                     SetEditTypeCompletionControls();
@@ -266,14 +242,11 @@ namespace BotWShrines
                     completionTypeDropDown.Items.Add("No");
                     break;
                 case 3: // Notes
-                    editDetailsBox.Enabled = true;
-                    editDetailsBox.Visible = true;
-                    editInstructionsLabel.Enabled = true;
-                    editInstructionsLabel.Visible = true;
-                    submit.Enabled = true;
-                    submit.Visible = true;
-                    updatedDetails = editDetailsBox.Text;
-                    editInstructionsLabel.Text = $"Enter notes for {shrineToEdit}:";
+                    editDetailsBox.ShowControl();
+                    editInstructionsLabel.ShowControl();
+                    submit.ShowControl();
+                    _updatedDetails = editDetailsBox.Text;
+                    editInstructionsLabel.Text = $"Enter notes for {_shrineToEdit}:";
                     break;
                 default:
                     throw new Exception("How did this happen? There are only 4 View-By selections...");
@@ -282,58 +255,62 @@ namespace BotWShrines
             completionTypeDropDown.SelectedIndex = -1;
         }
 
-        string newType;
-        string newCompletion;
+        private string _newType;
+        private string _newCompletion;
 
-        private void completionTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        private void CompletionTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (completionTypeDropDown.SelectedIndex == -1)
                 return;
-            submit.Enabled = true;
-            submit.Visible = true;
-            changesSaved.Enabled = false;
-            changesSaved.Visible = false;
+            submit.ShowControl();
+            changesSaved.HideControl();
         }
 
-        private void submit_Click(object sender, EventArgs e)
+        private void Submit_Click(object sender, EventArgs e)
         {
-            if (completionTypeDropDown.Items.Count == 3)
+            switch (completionTypeDropDown.Items.Count)
             {
-                if (completionTypeDropDown.SelectedIndex == 0)
-                    newType = "Blessing";
-                else if (completionTypeDropDown.SelectedIndex == 1)
-                    newType = "Combat";
-                else
-                    newType = "Puzzle";
-                EditData.ChangeType(newType, ref shrineList, shrineIndex);
+                case 3:
+                    switch (completionTypeDropDown.SelectedIndex)
+                    {
+                        case 0:
+                            _newType = "Blessing";
+                            break;
+                        case 1:
+                            _newType = "Combat";
+                            break;
+                        default:
+                            _newType = "Puzzle";
+                            break;
+                    }
+
+                    EditData.ChangeType(_newType, ref _allShrines, _shrineIndex);
+                    break;
+                case 2:
+                    _newCompletion = completionTypeDropDown.SelectedIndex == 0 ? "Yes" : "No";
+                    EditData.ChangeCompletion(_newCompletion, ref _allShrines, _shrineIndex);
+                    break;
             }
-            else if (completionTypeDropDown.Items.Count == 2)
+
+            switch (dataToEditDropDown.SelectedIndex)
             {
-                if (completionTypeDropDown.SelectedIndex == 0)
-                    newCompletion = "Yes";
-                else
-                    newCompletion = "No";
-                EditData.ChangeCompletion(newCompletion, ref shrineList, shrineIndex);
+                case 0:
+                    _updatedDetails = editDetailsBox.Text;
+                    EditData.ChangeDescription(_updatedDetails, ref _allShrines, _shrineIndex);
+                    break;
+                case 3:
+                    _updatedDetails = editDetailsBox.Text;
+                    EditData.ChangeNotes(_updatedDetails, ref _allShrines, _shrineIndex);
+                    break;
             }
-            if (dataToEditDropDown.SelectedIndex == 0)
-            {
-                updatedDetails = editDetailsBox.Text;
-                EditData.ChangeDescription(updatedDetails, ref shrineList, shrineIndex);
-            }
-            else if (dataToEditDropDown.SelectedIndex == 3)
-            {
-                updatedDetails = editDetailsBox.Text;
-                EditData.ChangeNotes(updatedDetails, ref shrineList, shrineIndex);
-            }
-            submit.Enabled = false;
-            submit.Visible = false;
-            changesSaved.Enabled = true;
-            changesSaved.Visible = true;
+
+            submit.HideControl();
+            changesSaved.ShowControl();
             editDetailsBox.Clear();
             completionTypeDropDown.SelectedIndex = -1;
 
-            DisplayData.ShowShrineInfo(shrineToEdit, shrineList, editDetailBox);
-            Xml.SaveChanges(shrineList);
+            DisplayData.ShowShrineInfo(_shrineToEdit, _allShrines, editDetailBox);
+            Xml.SaveChanges(_allShrines);
         }
     }
 }

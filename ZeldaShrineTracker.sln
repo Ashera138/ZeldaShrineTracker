@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotWShrines", "BotWShrines\BotWShrines.csproj", "{FE592DAE-0C10-4D5E-B3EB-6D14FED8C24A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeldaShrineTracker", "BotWShrines\ZeldaShrineTracker.csproj", "{FE592DAE-0C10-4D5E-B3EB-6D14FED8C24A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21E95904-B61F-44EA-B0D2-F093B6090C19}
 	EndGlobalSection
 EndGlobal

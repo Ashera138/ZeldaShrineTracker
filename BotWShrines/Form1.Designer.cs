@@ -1,4 +1,4 @@
-﻿namespace BotWShrines
+﻿namespace ZeldaShrineTracker
 {
     partial class Form1
     {
@@ -106,7 +106,7 @@
             this.typeCompletionSelection.Size = new System.Drawing.Size(130, 21);
             this.typeCompletionSelection.TabIndex = 7;
             this.typeCompletionSelection.Visible = false;
-            this.typeCompletionSelection.SelectedIndexChanged += new System.EventHandler(this.typeCompletionSelection_SelectedIndexChanged);
+            this.typeCompletionSelection.SelectedIndexChanged += new System.EventHandler(this.TypeCompletionSelection_SelectedIndexChanged);
             // 
             // queryLabel
             // 
@@ -122,7 +122,7 @@
             this.queryInputTextBox.Name = "queryInputTextBox";
             this.queryInputTextBox.Size = new System.Drawing.Size(376, 20);
             this.queryInputTextBox.TabIndex = 4;
-            this.queryInputTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.queryInputTextBox_KeyDown);
+            this.queryInputTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QueryInputTextBox_KeyDown);
             // 
             // label1
             // 
@@ -148,7 +148,7 @@
             this.viewByDropDown.Name = "viewByDropDown";
             this.viewByDropDown.Size = new System.Drawing.Size(161, 21);
             this.viewByDropDown.TabIndex = 0;
-            this.viewByDropDown.SelectedIndexChanged += new System.EventHandler(this.viewByDropDown_SelectedIndexChanged);
+            this.viewByDropDown.SelectedIndexChanged += new System.EventHandler(this.ViewByDropDown_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -193,7 +193,7 @@
             this.submit.Text = "Submit changes";
             this.submit.UseVisualStyleBackColor = true;
             this.submit.Visible = false;
-            this.submit.Click += new System.EventHandler(this.submit_Click);
+            this.submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // completionTypeDropDown
             // 
@@ -208,7 +208,7 @@
             this.completionTypeDropDown.Size = new System.Drawing.Size(146, 21);
             this.completionTypeDropDown.TabIndex = 17;
             this.completionTypeDropDown.Visible = false;
-            this.completionTypeDropDown.SelectedIndexChanged += new System.EventHandler(this.completionTypeDropDown_SelectedIndexChanged);
+            this.completionTypeDropDown.SelectedIndexChanged += new System.EventHandler(this.CompletionTypeDropDown_SelectedIndexChanged);
             // 
             // typeCompletionLabel
             // 
@@ -251,7 +251,7 @@
             this.dataToEditDropDown.Name = "dataToEditDropDown";
             this.dataToEditDropDown.Size = new System.Drawing.Size(138, 21);
             this.dataToEditDropDown.TabIndex = 12;
-            this.dataToEditDropDown.SelectedIndexChanged += new System.EventHandler(this.dataToEdit_SelectedIndexChanged);
+            this.dataToEditDropDown.SelectedIndexChanged += new System.EventHandler(this.DataToEdit_SelectedIndexChanged);
             // 
             // selectToEditLabel
             // 
@@ -290,8 +290,8 @@
             this.enterAShrineToEditBox.Name = "enterAShrineToEditBox";
             this.enterAShrineToEditBox.Size = new System.Drawing.Size(233, 20);
             this.enterAShrineToEditBox.TabIndex = 8;
-            this.enterAShrineToEditBox.TextChanged += new System.EventHandler(this.enterAShrineToEditBox_TextChanged);
-            this.enterAShrineToEditBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.enterAShrineToEditBox_KeyDown);
+            this.enterAShrineToEditBox.TextChanged += new System.EventHandler(this.EnterAShrineToEditBox_TextChanged);
+            this.enterAShrineToEditBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterAShrineToEditBox_KeyDown);
             // 
             // label2
             // 

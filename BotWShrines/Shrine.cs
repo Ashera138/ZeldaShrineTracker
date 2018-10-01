@@ -1,70 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BotWShrines
+﻿namespace ZeldaShrineTracker
 {
-    class Shrine
+    public class Shrine
     {
-        public string Name { get; }
-        public string Region { get; }
+        public readonly string Name;
+        public readonly string Region;
 
         private string _description;
         public string Description
         {
-            get
-            {
-                return _description;
-            }
-            set
-            {
-                _description = value ?? throw new ArgumentNullException
-                    ("Description cannot be set to null, but empty is okay.");
-            }
+            get => _description;
+            set => _description = value ?? string.Empty;
         }
 
         private string _type;
         public string Type
         {
-            get
-            {
-                return _type;
-            }
-            set
-            {
-                _type = value ?? throw new ArgumentNullException
-                    ("Uh, we weren't supposed to get to this point... null type!?! enum check on selection?");
-            }
+            get => _type;
+            set => _type = value ?? string.Empty;
         }
 
         private string _completion;
         public string Completion
         {
-            get
-            {
-                return _completion;
-            }
-            set
-            {
-                _completion = value ?? throw new ArgumentNullException
-                    ("Uh, we weren't supposed to get to this point... null completion!?! enum check on selection?");
-            }
+            get => _completion;
+            set => _completion = value ?? string.Empty;
         }
 
         private string _notes;
         public string Notes
         {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value ?? throw new ArgumentNullException
-                    ("Notes cannot be set to null, but empty is okay.");
-            }
+            get => _notes;
+            set => _notes = value ?? string.Empty;
         }
 
         public Shrine(string name, string region, string description,
