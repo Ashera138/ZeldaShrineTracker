@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BreathOfTheWildShrines>
+  <Shrine Name="Oman Au" Region="Great Plateau" Description="Magnesis Trial" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Ja Baij" Region="Great Plateau" Description="Bomb Trial" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Owa Daim" Region="Great Plateau" Description="Stasis Trial" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Keh Namut" Region="Great Plateau" Description="Cryonis Trial" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Dah Kaso" Region="Central" Description="A Minor Test of Strength" Type="Combat" Completion="Yes" Notes="(regular) ancient core in chest" />
+  <Shrine Name="Wahgo Katta" Region="Central" Description="Metal Connections" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Rota Ooh" Region="Central" Description="Passing of the Gates" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kaam Ya'tak" Region="Central" Description="Trial of Power" Type="Puzzle" Completion="Yes" Notes="Maybe not really complete?" />
+  <Shrine Name="Katah Chuki" Region="Central" Description="A Minor Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Noya Neha" Region="Central" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Saas Ko'sah" Region="Central" Description="A Major Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Namika Ozz" Region="Central" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Bosh Kala" Region="Dueling Peaks" Description="The Wind Guides You" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Ree Dahee" Region="Dueling Peaks" Description="Timing Is Critical" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Ha Dahamar" Region="Dueling Peaks" Description="The Water Guides" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Ta'log Naeg" Region="Dueling Peaks" Description="Ta'loh Naeg's Teaching" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Hila Rao" Region="Dueling Peaks" Description="Drifting" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Shee Vanath" Region="Dueling Peaks" Description="Twin Memories" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Shee Vaneer" Region="Dueling Peaks" Description="Twin Memories" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Toto Sah" Region="Dueling Peaks" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Lakna Rokee" Region="Dueling Peaks" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Kam Urog" Region="Hateno" Description="Trial of Passage" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Myahm Agana" Region="Hateno" Description="Myahm Agana Apparatus" Type="Puzzle" Completion="Yes" Notes="Worst shine ever." />
+  <Shrine Name="Chaas Qeta" Region="Hateno" Description="A Major Test of Strength" Type="Combat" Completion="Yes" Notes="Ancient core" />
+  <Shrine Name="Mezza Lo" Region="Hateno" Description="Ancient Trifecta" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Tahno O'ah" Region="Hateno" Description="Tahno O'ah's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Jitan Sa'mi" Region="Hateno" Description="Jitan Sa'mi's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Dow Na'eh" Region="Hateno" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Shae Katha" Region="Lake" Description="Shae Katha's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Ka'o Makagh" Region="Lake" Description="Metal Doors Open the Way" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Shoqa Tatone" Region="Lake" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Pumaag Nitae" Regio="Lake" Description="A Minor Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Ishto Soh" Region="Lake" Description="Bravery's Grasp" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Ya Naga" Region="Lake" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Yah Rin" Region="Faron" Description="A Weighty Decision" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Qukah Nata" Region="Faron" Description="Qukah Nata's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Shoda Sah" Region="Faron" Description="Impeccable Timing" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kah Yah" Region="Faron" Description="Quick Thinking" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Tawa Jinn" Region="Faron" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Korgu Chideh" Region="Faron" Description="Korgu Chideh's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Shai Utoh" Region="Faron" Description="Halt the Tilt" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Muwo Jeem" Region="Faron" Description="A Modest Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Sheh Rata" Region="Lanayru" Description="Speed of Light" Type="Puzzle" Completion="Yes" Notes="No treasure chest icon." />
+  <Shrine Name="Daka Tuss" Region="Lanayru" Description="Sunken Scoop" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Soh Kofi" Region="Lanayru" Description="A Minor Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Ne'ez Yohma" Region="Lanayru" Description="Pushing Power" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kaya Wan" Region="Lanayru" Description="Shields from Water" Type="Puzzle" Completion="Yes" Notes="No treasure chest icon" />
+  <Shrine Name="Rucco Maag" Region="Lanayru" Description="Five Flames" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kah Mael" Region="Lanayru" Description="Drop and Rise" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Shai Yota" Region="Lanayru" Description="Shai Yota's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Dagah Keek" Region="Lanayru" Description="Dagah Keek's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Mo'a Keet" Region="Eldin" Description="Metal Makes a Path" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Shae Mo'sah" Region="Eldin" Description="Swinging Flames" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Daqa Koh" Region="Eldin" Description="Stalled Flight" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Tah Muhl" Region="Eldin" Description="Passing the Flame" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Qua Raym" Region="Eldin" Description="A Balanced Approach" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kayra Mah" Region="Eldin" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Gorae Torr" Region="Eldin" Description="Gorae Torr's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Shora Hah" Region="Eldin" Description="Blue Flame" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Sah Dahaj" Region="Eldin" Description="Power of Fire" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Dah Hesho" Region="Akkala" Description="A Minor Test of Strength" Type="Combat" Completion="Yes" Notes="Giant ancient core (in chest)" />
+  <Shrine Name="Katosa Aug" Region="Akkala" Description="Katosa Aug Apparatus" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Ze Kasho" Region="Akkala" Description="Ze Kasho Apparatus" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Tutsuwa Nima" Region="Akkala" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Ke'nai Shakah" Region="Akkala" Description="A Modest Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Zuna Kai" Region="Akkala" Description="Zuna Kai's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Tu Ka'loh" Region="Akkala" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Ritaag Zumo" Region="Akkala" Description="Ritaag Zumo's Blessing" Type="Blessing" Completion="Yes" Notes="Giant ancient core" />
+  <Shrine Name="Keo Ruug" Region="Woodland" Description="Fateful Stars" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Mirro Shaz" Region="Woodland" Description="Tempered Power" Type="Puzzle" Completion="Yes" Notes="No treasure chest icon" />
+  <Shrine Name="Ketoh Wawai" Region="Woodland" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Rona Kachta" Region="Woodland" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Daag Chokah" Region="Woodland" Description="Daag Chokah's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Kuhn Sidajj" Region="Woodland" Description="Kuhn Sidajj's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Maag Halan" Region="Woodland" Description="Maag Halan's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Monya Toma" Region="Woodland" Description="Drawing Parabolas" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Hia Miu" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Qaza Tokki" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Mozo Shenno" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Shada Naw" Region="Hebra" Description="Red Giveaway" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Sha Gehma" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Goma Asaagh" Region="Hebra" Description="A Major Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="To Quomo" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Rok Uwog" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Maka Rah" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Rin Oyaa" Region="Hebra" Description="Directing the Wind" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Lanno Kooh" Region="Hebra" Description="Lanno Kooh's Blessing" Type="Blessing" Completion="Yes" Notes="" />
+  <Shrine Name="Dunba Taag" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Gee Ha'rah" Region="Hebra" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Akh Va'quot" Region="Tabantha" Description="Windmills" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Sha Warvo" Region="Tabantha" Description="Path of Hidden Winds" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Bareeda Naag" Region="Tabantha" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Voo Lota" Region="Tabantha" Description="The Winding Route" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kah Okeo" Region="Tabantha" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Tena Ko'sah" Region="Tabantha" Description="A Major Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Shae Loya" Region="Ridgeland" Description="Aim for the Moment" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Zalta Wa" Region="Ridgeland" Description="Two Orbs to Guide You" Type="Puzzle" Completion="Yes" Notes="Maybe not complete? Can't tell." />
+  <Shrine Name="Toh Yahsa" Region="Ridgeland" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Muah Rokee" Region="Ridgeland" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Maag No'rah" Region="Ridgeland" Description="" Type="" Completion="" Notes="" />
+  <Shrine Name="Sheem Dagoze" Region="Ridgeland" Description="Moving in Parallel" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Mogg Latan" Region="Ridgeland" Description="Synced Swing" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Sasa Kai" Region="Gerudo" Description="A Modest Test of Strength" Type="Combat" Completion="Yes" Notes="" />
+  <Shrine Name="Kuh Takkar" Region="Gerudo" Description="Melting Ice Hazard" Type="Puzzle" Completion="Yes" Notes="" />
+  <Shrine Name="Kema Kosassa" Region="Gerudo" Description="" Type="" Completion="" Notes="" />Description&gt;
+  <Shrine Name="Sho Dantu" Region="Gerudo" Description="Two Bombs" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Keeha Yoog" Region="Gerudo" Description="" Type="" Completion="" Notes="" /><Shrine Name="Joloo Nah" Region="Gerudo" Description="" Type="" Completion="" Notes="" /><Shrine Name="Jee Noh" Region="Wasteland" Description="On the Move" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Kay Noh" Region="Wasteland" Description="Power of Electricity" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Dako Tah" Region="Wasteland" Description="Electric Path" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Suma Sahma" Region="Wasteland" Description="Suma Sahma's Blessing" Type="Blessing" Completion="Yes" Notes="" /><Shrine Name="Daqo Chisay" Region="Wasteland" Description="The Whole Picture" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Kema Zoos" Region="Wasteland" Description="A Delayed Puzzle" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Raqa Zunzo" Region="Wasteland" Description="" Type="" Completion="" Notes="" /><Shrine Name="Hawa Koth" Region="Wasteland" Description="The Current Solution" Type="Puzzle" Completion="Yes" Notes="" /><Shrine Name="Dila Maag" Region="Wasteland" Description="Dila Maag's Blessing" Type="Blessing" Completion="Yes" Notes="" /><Shrine Name="Tho Kayu" Region="Wasteland" Description="" Type="" Completion="" Notes="" /><Shrine Name="Korsh O'hu" Region="Wasteland" Description="" Type="" Completion="" Notes="" /><Shrine Name="Misae Suma" Region="Wasteland" Description="" Type="" Completion="" Notes="" /></BreathOfTheWildShrines>

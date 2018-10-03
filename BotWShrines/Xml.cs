@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace ZeldaShrineTracker
@@ -13,7 +11,7 @@ namespace ZeldaShrineTracker
         internal static IEnumerable<Shrine> GetShrines()
         {
             var xDoc = XDocument.Load(_filepath);
-            List<XElement> shrineElements = xDoc.Descendants("Shrine").ToList();
+            var shrineElements = xDoc.Descendants("Shrine").ToList();
 
             for (int i = 0; i < shrineElements.Count(); i++)
             {
@@ -27,38 +25,21 @@ namespace ZeldaShrineTracker
             }
         }
 
-        // Change to XDoc and refactor as needed
         internal static void SaveChanges(List<Shrine> shrineList)
         {
-            // new
-            //var xDoc = XDocument.Load(_filepath);
-            //foreach (var shrine in shrineList)
-            //{
-            //    var test = xDoc.Element(shrine.Name)
-            //}
-            
-            // old
-            /*
-            XmlDocument xdoc = new XmlDocument();
-            FileStream rfile = new FileStream(_filepath, FileMode.Open);
-            xdoc.Load(rfile);
-
-            for (int i = 0; i < shrineList.Count; i++)
+            var xDoc = XDocument.Load(_filepath);
+            foreach (var shrine in shrineList)
             {
-                XmlElement descriptionEle = (XmlElement)xdoc.GetElementsByTagName("Description")[i];
-                XmlElement typeEle = (XmlElement)xdoc.GetElementsByTagName("Type")[i];
-                XmlElement completionEle = (XmlElement)xdoc.GetElementsByTagName("Completion")[i];
-                XmlElement notesEle = (XmlElement)xdoc.GetElementsByTagName("Notes")[i];
-
-                descriptionEle.InnerText = shrineList[i].Description;
-                typeEle.InnerText = shrineList[i].Type;
-                completionEle.InnerText = shrineList[i].Completion;
-                notesEle.InnerText = shrineList[i].Notes;
+                var matchingShrine = xDoc
+                    .Descendants("Shrine")
+                    .Single(s => s.Attribute("Name")?.Value == shrine.Name);
+                matchingShrine.Attribute("Description").Value = shrine.Description;
+                matchingShrine.Attribute("Type").Value = shrine.Type;
+                matchingShrine.Attribute("Completion").Value = shrine.Completion;
+                matchingShrine.Attribute("Notes").Value = shrine.Notes;
             }
-            rfile.Close();
-            xdoc.Save(_filepath);
-            rfile.Dispose();
-            */
+
+            xDoc.Save(_filepath);
         }
     }
 }
