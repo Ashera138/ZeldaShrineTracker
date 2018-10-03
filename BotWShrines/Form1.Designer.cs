@@ -142,7 +142,7 @@
             "Shrine Name",
             "Region",
             "Type",
-            "Completion",
+            "Completed",
             "Notes"});
             this.viewByDropDown.Location = new System.Drawing.Point(9, 36);
             this.viewByDropDown.Name = "viewByDropDown";
@@ -245,7 +245,7 @@
             this.dataToEditDropDown.Items.AddRange(new object[] {
             "Description",
             "Type",
-            "Completion",
+            "Completed",
             "Notes"});
             this.dataToEditDropDown.Location = new System.Drawing.Point(30, 314);
             this.dataToEditDropDown.Name = "dataToEditDropDown";

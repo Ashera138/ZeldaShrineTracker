@@ -141,8 +141,8 @@ namespace ZeldaShrineTracker
                     {
                         switch (typeCompletionSelection.SelectedIndex)
                         {
-                            case 0 when shrine.Completion == "Yes":
-                            case 1 when shrine.Completion == "No":
+                            case 0 when shrine.Completed:
+                            case 1 when shrine.Completed == false:
                                 viewDetailBox.Text += $"{shrine.Name} - {shrine.Region}{Environment.NewLine}";
                                 break;
                         }
@@ -235,7 +235,7 @@ namespace ZeldaShrineTracker
                     completionTypeDropDown.Items.Add("Combat");
                     completionTypeDropDown.Items.Add("Puzzle");
                     break;
-                case 2: // Completion
+                case 2: // Completed
                     SetEditTypeCompletionControls();
                     typeCompletionLabel.Text = "Select a completion status.";
                     completionTypeDropDown.Items.Add("Yes");
@@ -256,7 +256,7 @@ namespace ZeldaShrineTracker
         }
 
         private string _newType;
-        private string _newCompletion;
+        private bool _newCompletion;
 
         private void CompletionTypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -287,7 +287,7 @@ namespace ZeldaShrineTracker
                     EditData.ChangeType(_newType, ref _allShrines, _shrineIndex);
                     break;
                 case 2:
-                    _newCompletion = completionTypeDropDown.SelectedIndex == 0 ? "Yes" : "No";
+                    _newCompletion = completionTypeDropDown.SelectedIndex == 0;
                     EditData.ChangeCompletion(_newCompletion, ref _allShrines, _shrineIndex);
                     break;
             }

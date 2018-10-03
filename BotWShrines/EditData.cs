@@ -14,9 +14,9 @@ namespace ZeldaShrineTracker
             shrineList[shrineToChangeIndex].Type = newType;
         }
 
-        internal static void ChangeCompletion(string newCompletion, ref List<Shrine> shrineList, int shrineToChangeIndex)
+        internal static void ChangeCompletion(bool newCompletion, ref List<Shrine> shrineList, int shrineToChangeIndex)
         {
-            shrineList[shrineToChangeIndex].Completion = newCompletion;
+            shrineList[shrineToChangeIndex].Completed = newCompletion;
         }
 
         internal static void ChangeNotes(string newNotes, ref List<Shrine> shrineList, int shrineToChangeIndex)

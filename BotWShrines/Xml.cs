@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -19,9 +20,17 @@ namespace ZeldaShrineTracker
                 var region = shrineElements[i].Attribute("Region")?.Value;
                 var description = shrineElements[i].Attribute("Description")?.Value;
                 var type = shrineElements[i].Attribute("Type")?.Value;
-                var completion = shrineElements[i].Attribute("Completion")?.Value;
+                var completed = Convert.ToBoolean(shrineElements[i].Attribute("Completed")?.Value);
                 var notes = shrineElements[i].Attribute("Notes")?.Value;
-                yield return new Shrine(name, region, description, type, completion, notes);
+                yield return new Shrine()
+                {
+                    Name = name,
+                    Region = region,
+                    Description = description,
+                    Type = type,
+                    Completed = completed,
+                    Notes = notes
+                };
             }
         }
 
@@ -35,7 +44,7 @@ namespace ZeldaShrineTracker
                     .Single(s => s.Attribute("Name")?.Value == shrine.Name);
                 matchingShrine.Attribute("Description").Value = shrine.Description;
                 matchingShrine.Attribute("Type").Value = shrine.Type;
-                matchingShrine.Attribute("Completion").Value = shrine.Completion;
+                matchingShrine.Attribute("Completed").Value = shrine.Completed.ToString();
                 matchingShrine.Attribute("Notes").Value = shrine.Notes;
             }
 

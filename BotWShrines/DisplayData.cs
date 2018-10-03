@@ -15,7 +15,7 @@ namespace ZeldaShrineTracker
                 textBoxOnForm.Text += shrine.Region + Environment.NewLine;
                 textBoxOnForm.Text += "Description: " + shrine.Description + Environment.NewLine;
                 textBoxOnForm.Text += $"Type: {shrine.Type}{Environment.NewLine}";
-                textBoxOnForm.Text += $"Completed?: {shrine.Completion}{Environment.NewLine}";
+                textBoxOnForm.Text += $"Completed?: {shrine.Completed}{Environment.NewLine}";
                 textBoxOnForm.Text += $"Notes: {shrine.Notes}";
             }
         }
@@ -39,7 +39,7 @@ namespace ZeldaShrineTracker
             textBoxOnForm.Clear();
             foreach (Shrine shrine in shrines)
             {
-                string completion = (shrine.Completion == "Yes") ? "Yes" : "No";
+                bool completion = shrine.Completed;
                 if (shrine.Region == region)
                 {
                     textBoxOnForm.Text += $"{shrine.Name} - Completed? {completion}{Environment.NewLine}";
